@@ -57,7 +57,7 @@ describe('HtmlWebpackHarddiskPlugin', function () {
 
   it('generates multiple files even if webpack is set to memory-fs', function (done) {
     var compiler = webpack({
-      entry: path.join(__dirname, 'fixtures', 'entry.js'),
+      entry: path.join(__dirname, 'fixtures', 'entry_with_script.js'),
       output: {
         path: OUTPUT_DIR
       },
@@ -89,7 +89,7 @@ describe('HtmlWebpackHarddiskPlugin', function () {
 
   it('works alongside other plugins on the same event', function (done) {
     var compiler = webpack({
-      entry: path.join(__dirname, 'fixtures', 'entry.js'),
+      entry: path.join(__dirname, 'fixtures', 'entry_with_script.js'),
       output: {
         path: OUTPUT_DIR
       },
@@ -106,6 +106,8 @@ describe('HtmlWebpackHarddiskPlugin', function () {
       expect(err).toBeFalsy();
       var htmlFile = path.resolve(__dirname, '../dist/index.html');
       expect(fs.existsSync(htmlFile)).toBe(true);
+      var htmlContent = fs.readFileSync(htmlFile).toString();
+      expect(htmlContent).toContain('an inlined script');
       done();
     });
     compiler.outputFileSystem = new MemoryFileSystem();

@@ -9,7 +9,8 @@
   "scripts": {
     "prepublish": "npm run test",
     "pretest": "semistandard",
-    "test": "jasmine"
+    "test": "jasmine",
+    "debug": "node-debug jasmine"
   },
   "repository": {
     "type": "git",

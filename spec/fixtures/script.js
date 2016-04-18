@@ -1,1 +1,1 @@
-module.exports = 'a script';
+module.exports = 'an inlined script';
