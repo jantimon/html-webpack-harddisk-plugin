@@ -7,9 +7,9 @@
     "index.js"
   ],
   "scripts": {
+    "prepublish": "npm run test",
     "pretest": "semistandard",
-    "test": "jasmine",
-    "prepublish": "test"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
