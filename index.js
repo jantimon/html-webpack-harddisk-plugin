@@ -34,7 +34,7 @@ HtmlWebpackHarddiskPlugin.prototype.writeAssetToDisk = function (compilation, ht
       return callback(err);
     }
     // Write to disk
-    fs.writeFile(fullPath, compilation.assets[webpackHtmlFilename], function (err) {
+    fs.writeFile(fullPath, compilation.assets[webpackHtmlFilename].source(), function (err) {
       if (err) {
         return callback(err);
       }
