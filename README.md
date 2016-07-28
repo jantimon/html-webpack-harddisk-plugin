@@ -18,6 +18,12 @@ $ npm install --save-dev html-webpack-harddisk-plugin
 
 Basic Usage
 -----------
+Require the plugin in your webpack config:
+
+```javascript
+var HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
+```
+
 Add the plugin to your webpack config as follows:
 
 ```javascript
