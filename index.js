@@ -27,7 +27,7 @@ HtmlWebpackHarddiskPlugin.prototype.writeAssetToDisk = function (compilation, ht
     return callback(null);
   }
   // Prepare the folder
-  var fullPath = path.resolve(compilation.compiler.outputPath, webpackHtmlFilename);
+  var fullPath = path.resolve(compilation.compiler.options.context + compilation.compiler.options.output.publicPath, webpackHtmlFilename);
   var directory = path.dirname(fullPath);
   mkdirp(directory, function (err) {
     if (err) {
