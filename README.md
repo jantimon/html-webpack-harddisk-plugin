@@ -63,3 +63,11 @@ plugins: [
   new HtmlWebpackHarddiskPlugin()
 ]  
 ```
+
+If you need to set the output path explicitly (for example when using with webpack-dev-server middleware) then pass in the `outputPath` option:
+
+```
+new HtmlWebpackHarddiskPlugin({
+  outputPath: path.resolve(__dirname, 'views')
+})
+```
