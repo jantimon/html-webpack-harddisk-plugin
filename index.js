@@ -1,11 +1,11 @@
 'use strict';
-var assert = require('assert');
 var mkdirp = require('mkdirp');
 var fs = require('fs');
 var path = require('path');
 
 function HtmlWebpackHarddiskPlugin (options) {
-  assert.equal(options, undefined, 'The HtmlWebpackHarddiskPlugin does not accept any options');
+  options = options || {};
+  this.outputPath = options.outputPath;
 }
 
 HtmlWebpackHarddiskPlugin.prototype.apply = function (compiler) {
@@ -27,7 +27,7 @@ HtmlWebpackHarddiskPlugin.prototype.writeAssetToDisk = function (compilation, ht
     return callback(null);
   }
   // Prepare the folder
-  var fullPath = path.resolve(compilation.compiler.outputPath, webpackHtmlFilename);
+  var fullPath = path.resolve(this.outputPath || compilation.compiler.outputPath, webpackHtmlFilename);
   var directory = path.dirname(fullPath);
   mkdirp(directory, function (err) {
     if (err) {

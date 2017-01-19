@@ -85,4 +85,38 @@ describe('HtmlWebpackHarddiskPlugin', function () {
     });
     compiler.outputFileSystem = new MemoryFileSystem();
   });
+
+  it('writes to specific outputPath if specified in options', function (done) {
+    var compiler = webpack({
+      entry: path.join(__dirname, 'fixtures', 'entry.js'),
+      output: {
+        path: OUTPUT_DIR
+      },
+      plugins: [
+        new HtmlWebpackPlugin({
+          alwaysWriteToDisk: true
+        }),
+        new HtmlWebpackPlugin({
+          filename: 'demo.html',
+          alwaysWriteToDisk: true
+        }),
+        new HtmlWebpackPlugin({
+          filename: 'skip.html'
+        }),
+        new HtmlWebpackHarddiskPlugin({
+          outputPath: path.resolve(OUTPUT_DIR, 'foo')
+        })
+      ]
+    }, function (err) {
+      expect(err).toBeFalsy();
+      var htmlFile = path.resolve(__dirname, '../dist/foo/index.html');
+      expect(fs.existsSync(htmlFile)).toBe(true);
+      var demoHtmlFile = path.resolve(__dirname, '../dist/foo/demo.html');
+      expect(fs.existsSync(demoHtmlFile)).toBe(true);
+      var skipHtmlFile = path.resolve(__dirname, '../dist/foo/skip.html');
+      expect(fs.existsSync(skipHtmlFile)).toBe(false);
+      done();
+    });
+    compiler.outputFileSystem = new MemoryFileSystem();
+  });
 });
