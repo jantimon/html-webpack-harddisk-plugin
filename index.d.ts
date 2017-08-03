@@ -1,15 +1,20 @@
-import { Plugin } from 'webpack';
+// Type definitions for html-webpack-harddisk-plugin 0.4.0
+// Project: https://github.com/alexindigo/webpack-chunk-hash
+// Definitions by: Cristian Lorenzo <https://github.com/dogmatico>
 
-interface HtmlWebpackHarddiskPluginOptions {
+import { Plugin } from "webpack";
+
+declare class HtmlWebpackHarddiskPlugin extends Plugin {
+  constructor(options?: HtmlWebpackHarddiskPlugin.Options);
+}
+
+declare namespace HtmlWebpackHarddiskPlugin {
+  interface Options {
   /**
    * Path where to save compiled assets
    */
-  outputPath?: string;
+    outputPath?: string;
+  }
 }
 
-interface HtmlWebpackHarddiskPlugin extends Plugin {
-  new (options?: HtmlWebpackHarddiskPluginOptions): HtmlWebpackHarddiskPlugin;
-}
-
-declare const htmlWebpackHarddiskPlugin: HtmlWebpackHarddiskPlugin
-export = htmlWebpackHarddiskPlugin
+export = HtmlWebpackHarddiskPlugin;
