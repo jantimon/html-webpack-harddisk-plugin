@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-  - "0.12"
   - "4"
   - "5"
+  - "6"
 env:
   - WEBPACK_VERSION=1 HTML_WEBPACK_VERSION=2
   - WEBPACK_VERSION=4 HTML_WEBPACK_VERSION=3
@@ -10,6 +10,15 @@ install:
   - npm install --ignore-scripts
   - npm rm webpack
   - npm rm html-webpack-plugin
-  - npm install webpack@WEBPACK_VERSION html-webpack-plugin@HTML_WEBPACK_VERSION --ignore-scripts || true
+  - npm install webpack@$WEBPACK_VERSION html-webpack-plugin@$HTML_WEBPACK_VERSION --ignore-scripts || true
+matrix:
+  exclude:
+    - env: WEBPACK_VERSION=4 HTML_WEBPACK_VERSION=3
+      node_js: "4"
+    - env: WEBPACK_VERSION=4 HTML_WEBPACK_VERSION=3
+      node_js: "5"
+  include:
+    - env: WEBPACK_VERSION=4 HTML_WEBPACK_VERSION=3
+      node_js: "8"
 script:
   - npm test
