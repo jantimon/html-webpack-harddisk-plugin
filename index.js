@@ -12,8 +12,9 @@ HtmlWebpackHarddiskPlugin.prototype.apply = function (compiler) {
   var self = this;
 
   if (compiler.hooks) {
-    compiler.hooks.compilation.tap('HtmlWebpackHarddiskHooks', function (compilation) {
-      compilation.hooks.htmlWebpackPluginAfterEmit.tapAsync('wut', function (htmlPluginData, callback) {
+    // webpack 4 support
+    compiler.hooks.compilation.tap('HtmlWebpackHarddisk', function (compilation) {
+      compilation.hooks.htmlWebpackPluginAfterEmit.tapAsync('HtmlWebpackHarddisk', function (htmlPluginData, callback) {
         self.writeAssetToDisk(compilation, htmlPluginData.plugin.options, htmlPluginData.outputName, callback);
       });
     });
