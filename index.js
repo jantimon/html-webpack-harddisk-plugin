@@ -10,12 +10,22 @@ function HtmlWebpackHarddiskPlugin (options) {
 
 HtmlWebpackHarddiskPlugin.prototype.apply = function (compiler) {
   var self = this;
-  // Hook into the html-webpack-plugin processing
-  compiler.plugin('compilation', function (compilation) {
-    compilation.plugin('html-webpack-plugin-after-emit', function (htmlPluginData, callback) {
-      self.writeAssetToDisk(compilation, htmlPluginData.plugin.options, htmlPluginData.outputName, callback);
+
+  if (compiler.hooks) {
+    // webpack 4 support
+    compiler.hooks.compilation.tap('HtmlWebpackHarddisk', function (compilation) {
+      compilation.hooks.htmlWebpackPluginAfterEmit.tapAsync('HtmlWebpackHarddisk', function (htmlPluginData, callback) {
+        self.writeAssetToDisk(compilation, htmlPluginData.plugin.options, htmlPluginData.outputName, callback);
+      });
     });
-  });
+  } else {
+    // Hook into the html-webpack-plugin processing
+    compiler.plugin('compilation', function (compilation) {
+      compilation.plugin('html-webpack-plugin-after-emit', function (htmlPluginData, callback) {
+        self.writeAssetToDisk(compilation, htmlPluginData.plugin.options, htmlPluginData.outputName, callback);
+      });
+    });
+  }
 };
 
 /**
