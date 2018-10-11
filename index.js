@@ -14,12 +14,22 @@ HtmlWebpackHarddiskPlugin.prototype.apply = function (compiler) {
   if (compiler.hooks) {
     // webpack 4 support
     compiler.hooks.compilation.tap('HtmlWebpackHarddisk', function (compilation) {
-      compilation.hooks.htmlWebpackPluginAfterEmit.tapAsync('HtmlWebpackHarddisk', function (htmlPluginData, callback) {
-        self.writeAssetToDisk(compilation, htmlPluginData.plugin.options, htmlPluginData.outputName, callback);
-      });
+      if (compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration) {
+        compilation.hooks.htmlWebpackPluginAfterEmit.tapAsync('HtmlWebpackHarddisk', function (htmlPluginData, callback) {
+          self.writeAssetToDisk(compilation, htmlPluginData.plugin.options, htmlPluginData.outputName, callback);
+        });
+      } else {
+        // HtmlWebPackPlugin 4.x
+        var HtmlWebpackPlugin = require('html-webpack-plugin');
+        var hooks = HtmlWebpackPlugin.getHooks(compilation);
+
+        hooks.afterEmit.tapAsync('HtmlWebpackHarddisk', function (htmlPluginData, callback) {
+          self.writeAssetToDisk(compilation, htmlPluginData.plugin.options, htmlPluginData.outputName, callback);
+        });
+      }
     });
   } else {
-    // Hook into the html-webpack-plugin processing
+    // webpack 3 support
     compiler.plugin('compilation', function (compilation) {
       compilation.plugin('html-webpack-plugin-after-emit', function (htmlPluginData, callback) {
         self.writeAssetToDisk(compilation, htmlPluginData.plugin.options, htmlPluginData.outputName, callback);

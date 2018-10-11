@@ -31,12 +31,12 @@
   "homepage": "https://github.com/jantimon/html-webpack-harddisk-plugin",
   "devDependencies": {
     "@types/webpack": "^4.4.12",
-    "html-webpack-plugin": "^2.16.0",
+    "html-webpack-plugin": "^4.0.0-beta.1",
     "jasmine": "^2.4.1",
     "memory-fs": "^0.3.0",
     "rimraf": "^2.5.2",
     "semistandard": "^7.0.5",
-    "webpack": "^1.13.0"
+    "webpack": "^4.20.2"
   },
   "peerDependencies": {
     "html-webpack-plugin": "^2.0.0 || ^3.0.0",
