@@ -3,7 +3,7 @@ var path = require('path');
 var fs = require('fs');
 var MemoryFileSystem = require('memory-fs');
 var webpack = require('webpack');
-var rm_rf = require('rimraf');
+var rimraf = require('rimraf');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackHarddiskPlugin = require('../');
 
@@ -11,7 +11,7 @@ var OUTPUT_DIR = path.join(__dirname, '../dist');
 
 describe('HtmlWebpackHarddiskPlugin', function () {
   beforeEach(function (done) {
-    rm_rf(OUTPUT_DIR, done);
+    rimraf(OUTPUT_DIR, done);
   });
 
   it('should not generate files by default', function (done) {
