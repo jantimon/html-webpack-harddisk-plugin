@@ -1,24 +1,11 @@
 language: node_js
 node_js:
-  - "4"
-  - "5"
-  - "6"
-env:
-  - WEBPACK_VERSION=1 HTML_WEBPACK_VERSION=2
-  - WEBPACK_VERSION=4 HTML_WEBPACK_VERSION=3
+  - stable
+  - lts/*
+  - 6.9
+before_install:
+  - stty columns 120
 install:
-  - npm install --ignore-scripts
-  - npm rm webpack
-  - npm rm html-webpack-plugin
-  - npm install webpack@$WEBPACK_VERSION html-webpack-plugin@$HTML_WEBPACK_VERSION --ignore-scripts || true
-matrix:
-  exclude:
-    - env: WEBPACK_VERSION=4 HTML_WEBPACK_VERSION=3
-      node_js: "4"
-    - env: WEBPACK_VERSION=4 HTML_WEBPACK_VERSION=3
-      node_js: "5"
-  include:
-    - env: WEBPACK_VERSION=4 HTML_WEBPACK_VERSION=3
-      node_js: "8"
+  - travis_retry npm install --ignore-scripts
 script:
-  - npm test
+  - travis_retry npm test

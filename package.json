@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-harddisk-plugin",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Write html files to hard disk even when using the webpack dev server or middleware",
   "main": "index.js",
   "files": [
@@ -10,6 +10,8 @@
     "prepublish": "npm run test",
     "pretest": "semistandard",
     "test": "jasmine",
+    "commit": "git-cz",
+    "release": "standard-version",
     "debug": "node-debug jasmine"
   },
   "repository": {
@@ -31,11 +33,14 @@
   "homepage": "https://github.com/jantimon/html-webpack-harddisk-plugin",
   "devDependencies": {
     "@types/webpack": "^4.4.12",
+    "commitizen": "3.0.2",
+    "cz-conventional-changelog": "2.1.0",
     "html-webpack-plugin": "^4.0.0-beta.1",
     "jasmine": "^2.4.1",
     "memory-fs": "^0.3.0",
     "rimraf": "^2.5.2",
     "semistandard": "^7.0.5",
+    "standard-version": "4.4.0",
     "webpack": "^4.20.2"
   },
   "peerDependencies": {
@@ -44,5 +49,13 @@
   },
   "dependencies": {
     "mkdirp": "^0.5.1"
+  },
+  "engines": {
+    "node": ">=6.9"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
