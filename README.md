@@ -10,7 +10,7 @@ This is an extension plugin for the [webpack](http://webpack.github.io) plugin [
 Installation
 ------------
 You must be running webpack on node 0.12.x or higher
-
+Copy the code below and paste in terminal
 Install the plugin with npm:
 ```shell
 $ npm install --save-dev html-webpack-harddisk-plugin
@@ -18,7 +18,8 @@ $ npm install --save-dev html-webpack-harddisk-plugin
 
 Basic Usage
 -----------
-Require the plugin in your webpack config:
+
+Must Require the plugin in your webpack config:
 
 ```javascript
 var HtmlWebpackHarddiskPlugin = require('html-webpack-harddisk-plugin');
