@@ -15,6 +15,7 @@ Install the plugin with npm:
 ```shell
 $ npm install --save-dev html-webpack-harddisk-plugin
 ```
+Recommended IDE - VS Code (An open source IDE from microsoft) for newbies.
 
 Basic Usage
 -----------
