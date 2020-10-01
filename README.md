@@ -7,6 +7,8 @@ functionality by adding the `{alwaysWriteToDisk: true|false}` option.
 
 This is an extension plugin for the [webpack](http://webpack.github.io) plugin [html-webpack-plugin](https://github.com/ampedandwired/html-webpack-plugin) - a plugin that simplifies the creation of HTML files to serve your webpack bundles.
 
+
+npm -is a package manager for node.js
 Installation
 ------------
 You must be running webpack on node 0.12.x or higher
