@@ -12,7 +12,7 @@ HtmlWebpackHarddiskPlugin.prototype.apply = function (compiler) {
   var self = this;
 
   if (compiler.hooks) {
-    // webpack 4 support
+    // webpack 4 support us
     compiler.hooks.compilation.tap('HtmlWebpackHarddisk', function (compilation) {
       if (compilation.hooks.htmlWebpackPluginBeforeHtmlGeneration) {
         compilation.hooks.htmlWebpackPluginAfterEmit.tapAsync('HtmlWebpackHarddisk', function (htmlPluginData, callback) {
