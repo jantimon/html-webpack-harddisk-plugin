@@ -13,8 +13,6 @@ jobs:
         webpack: ['4', '5']
 
     steps:
-      - name: LF
-        run: git config --global core.autocrlf false
 
       - name: Checkout repo
         uses: actions/checkout@v2
