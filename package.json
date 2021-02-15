@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-harddisk-plugin",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "Write html files to hard disk even when using the webpack dev server or middleware",
   "main": "index.js",
   "types": "index.d.ts",
