@@ -31,4 +31,4 @@ jobs:
         run: npm install --ignore-scripts --force --legacy-peer-deps webpack@${{ matrix.webpack }} html-webpack-plugin@${{ matrix.webpack }}
 
       - name: Test
-        run: npm test -- --forceExit || npm test -- --forceExit || npm test -- --forceExit
+        run: npm test || npm test || npm test
