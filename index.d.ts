@@ -1,4 +1,4 @@
-import { Plugin } from 'webpack';
+import { WebpackPluginInstance } from 'webpack';
 
 interface HtmlWebpackHarddiskPluginOptions {
   /**
@@ -7,7 +7,7 @@ interface HtmlWebpackHarddiskPluginOptions {
   outputPath?: string;
 }
 
-interface HtmlWebpackHarddiskPlugin extends Plugin {
+interface HtmlWebpackHarddiskPlugin extends WebpackPluginInstance {
   new (options?: HtmlWebpackHarddiskPluginOptions): HtmlWebpackHarddiskPlugin;
 }
 
