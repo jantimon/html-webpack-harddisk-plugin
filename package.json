@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/jantimon/html-webpack-harddisk-plugin",
   "devDependencies": {
-    "commitizen": "4.2.3",
+    "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
     "html-webpack-plugin": "^5.1.0",
     "jasmine": "3.6.4",
